@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Torukmaktocode's GitHub profile" src="https://raw.githubusercontent.com/Torukmaktocode/Torukmaktocode/main/dark_mode.png" width="100%" />
+  <img alt="Torukmaktocode's GitHub profile" src="https://raw.githubusercontent.com/Torukmaktocode/Torukmaktocode/main/dark_mode.png?v=2" width="100%" />
 </p>
 
 <br>
@@ -11,7 +11,7 @@
 <br>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Torukmaktocode/Torukmaktocode/main/contributions.png" alt="Contribution Heatmap" width="700" />
+  <img src="https://raw.githubusercontent.com/Torukmaktocode/Torukmaktocode/main/contributions.png?v=2" alt="Contribution Heatmap" width="700" />
 </p>
 
 <br>
