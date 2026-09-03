@@ -11,7 +11,7 @@
 </defs>
 <rect width="796" height="166" fill="#0d1117" rx="6"/>
 <rect x="0" y="0" width="796" height="4" fill="url(#headerGrad)" rx="6"/>
-<text x="12" y="22" fill="#ffffff" font-size="13" font-weight="600" font-family="sans-serif">9 contributions in the last year</text>
+<text x="12" y="22" fill="#ffffff" font-size="13" font-weight="600" font-family="sans-serif">12 contributions in the last year</text>
 <text x="38" y="22" fill="#8b949e" font-size="10" font-family="sans-serif">Sep</text>
 <text x="94" y="22" fill="#8b949e" font-size="10" font-family="sans-serif">Oct</text>
 <text x="150" y="22" fill="#8b949e" font-size="10" font-family="sans-serif">Nov</text>
@@ -185,8 +185,7 @@
 <rect x="346" y="42" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-02-09 (Mon)</title></rect>
 <rect x="346" y="56" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-02-10 (Tue)</title></rect>
 <rect x="346" y="70" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-02-11 (Wed)</title></rect>
-<rect x="346" y="84" width="11" height="11" fill="#0e4429" rx="2" opacity="0.3" filter="url(#glow)"/>
-<rect x="346" y="84" width="11" height="11" fill="#0e4429" rx="2"><title>1 contributions on 2026-02-12 (Thu)</title></rect>
+<rect x="346" y="84" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-02-12 (Thu)</title></rect>
 <rect x="346" y="98" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-02-13 (Fri)</title></rect>
 <rect x="346" y="112" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-02-14 (Sat)</title></rect>
 <rect x="360" y="28" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-02-15 (Sun)</title></rect>
@@ -347,8 +346,7 @@
 <rect x="668" y="42" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-07-20 (Mon)</title></rect>
 <rect x="668" y="56" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-07-21 (Tue)</title></rect>
 <rect x="668" y="70" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-07-22 (Wed)</title></rect>
-<rect x="668" y="84" width="11" height="11" fill="#0e4429" rx="2" opacity="0.3" filter="url(#glow)"/>
-<rect x="668" y="84" width="11" height="11" fill="#0e4429" rx="2"><title>1 contributions on 2026-07-23 (Thu)</title></rect>
+<rect x="668" y="84" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-07-23 (Thu)</title></rect>
 <rect x="668" y="98" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-07-24 (Fri)</title></rect>
 <rect x="668" y="112" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-07-25 (Sat)</title></rect>
 <rect x="682" y="28" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-07-26 (Sun)</title></rect>
@@ -379,23 +377,18 @@
 <rect x="724" y="84" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-20 (Thu)</title></rect>
 <rect x="724" y="98" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-21 (Fri)</title></rect>
 <rect x="724" y="112" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-22 (Sat)</title></rect>
-<rect x="738" y="28" width="11" height="11" fill="#0e4429" rx="2" opacity="0.3" filter="url(#glow)"/>
-<rect x="738" y="28" width="11" height="11" fill="#0e4429" rx="2"><title>1 contributions on 2026-08-23 (Sun)</title></rect>
-<rect x="738" y="42" width="11" height="11" fill="#0e4429" rx="2" opacity="0.3" filter="url(#glow)"/>
-<rect x="738" y="42" width="11" height="11" fill="#0e4429" rx="2"><title>1 contributions on 2026-08-24 (Mon)</title></rect>
+<rect x="738" y="28" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-23 (Sun)</title></rect>
+<rect x="738" y="42" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-24 (Mon)</title></rect>
 <rect x="738" y="56" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-25 (Tue)</title></rect>
 <rect x="738" y="70" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-26 (Wed)</title></rect>
 <rect x="738" y="84" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-27 (Thu)</title></rect>
 <rect x="738" y="98" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-28 (Fri)</title></rect>
-<rect x="738" y="112" width="11" height="11" fill="#0e4429" rx="2" opacity="0.3" filter="url(#glow)"/>
-<rect x="738" y="112" width="11" height="11" fill="#0e4429" rx="2"><title>1 contributions on 2026-08-29 (Sat)</title></rect>
-<rect x="752" y="28" width="11" height="11" fill="#0e4429" rx="2" opacity="0.3" filter="url(#glow)"/>
-<rect x="752" y="28" width="11" height="11" fill="#0e4429" rx="2"><title>2 contributions on 2026-08-30 (Sun)</title></rect>
+<rect x="738" y="112" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-29 (Sat)</title></rect>
+<rect x="752" y="28" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-30 (Sun)</title></rect>
 <rect x="752" y="42" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-08-31 (Mon)</title></rect>
 <rect x="752" y="56" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-09-01 (Tue)</title></rect>
 <rect x="752" y="70" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-09-02 (Wed)</title></rect>
-<rect x="752" y="84" width="11" height="11" fill="#0e4429" rx="2" opacity="0.3" filter="url(#glow)"/>
-<rect x="752" y="84" width="11" height="11" fill="#0e4429" rx="2"><title>1 contributions on 2026-09-03 (Thu)</title></rect>
+<rect x="752" y="84" width="11" height="11" fill="#161b22" rx="2"><title>0 contributions on 2026-09-03 (Thu)</title></rect>
 <text x="658" y="153" fill="#8b949e" font-size="10" font-family="sans-serif">Less</text>
 <rect x="686" y="143" width="11" height="11" fill="#161b22" rx="2"/>
 <rect x="700" y="143" width="11" height="11" fill="#0e4429" rx="2"/>

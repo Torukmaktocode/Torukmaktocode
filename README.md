@@ -1,27 +1,20 @@
-<img alt="Torukmaktocode's GitHub profile" src="dark_mode.svg" />
+<p align="center">
+  <img alt="Torukmaktocode's GitHub profile" src="dark_mode.svg" width="100%" />
+</p>
 
----
+<br>
 
-<table>
-<tr>
-<td>
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=Torukmaktocode&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+</p>
 
-### 📈 Contributions
+<br>
 
-![Contributions](./contributions.svg)
+<p align="center">
+  <img src="./contributions.svg" alt="Contribution Heatmap" width="700" />
+</p>
 
-</td>
-<td>
-
-### 🔥 Streak
-
-[![GitHub Streak](https://streak-stats.demolab.com?user=Torukmaktocode&theme=tokyonight&hide_border=true)](https://git.io/streak-stats)
-
-</td>
-</tr>
-</table>
-
----
+<br>
 
 <p align="center">
   <img src="https://img.shields.io/github/followers/Torukmaktocode?label=Followers&style=for-the-badge&color=00bcd4" />
@@ -30,6 +23,8 @@
   <img src="https://img.shields.io/github/commits/Torukmaktocode?label=Commits&style=for-the-badge&color=4caf50" />
 </p>
 
+<br>
+
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Torukmaktocode&color=00bcd4&style=flat-square&label=VIEWS" alt="Profile Views" />
+  <img src="https://komarev.com/ghpvc/?username=Torukmaktocode&color=00bcd4&style=flat-square&label=PROFILE+VIEWS" alt="Profile Views" />
 </p>
