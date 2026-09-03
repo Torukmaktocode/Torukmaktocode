@@ -17,10 +17,9 @@
 <br>
 
 <p align="center">
-  <img src="https://img.shields.io/github/followers/Torukmaktocode?label=Followers&style=for-the-badge&color=00bcd4" />
-  <img src="https://img.shields.io/github/repos/Torukmaktocode?label=Repos&style=for-the-badge&color=9c27b0" />
-  <img src="https://img.shields.io/github/stars/Torukmaktocode?label=Stars&style=for-the-badge&color=ff9800" />
-  <img src="https://img.shields.io/github/commits/Torukmaktocode?label=Commits&style=for-the-badge&color=4caf50" />
+  <img src="https://img.shields.io/github/followers/Torukmaktocode?label=Followers&style=for-the-badge&color=00bcd4" alt="Followers" />
+  <img src="https://img.shields.io/github/repos/Torukmaktocode?label=Repos&style=for-the-badge&color=9c27b0" alt="Repos" />
+  <img src="https://img.shields.io/github/stars/Torukmaktocode?label=Stars&style=for-the-badge&color=ff9800" alt="Stars" />
 </p>
 
 <br>
