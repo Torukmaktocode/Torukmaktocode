@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetch GitHub contributions and render dark theme heatmap SVG.
-Matches GitHub's native contribution graph layout exactly.
-Usage: python fetch_and_render.py [username]
+Fetch GitHub contributions and render premium dark heatmap SVG.
 """
 import requests
 from datetime import datetime, timedelta
@@ -10,17 +8,17 @@ import sys
 
 USERNAME = sys.argv[1] if len(sys.argv) > 1 else "Torukmaktocode"
 
-# GitHub's exact dark palette
-PALETTE = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
-BG_COLOR = "#0d1117"
-TEXT_COLOR = "#8b949e"
-ROUND = 2
+# Premium dark palette with gradient
+PALETTE = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353", "#69f0a0"]
+BG = "#0d1117"
+TEXT = "#8b949e"
+BORDER = "#30363d"
 
-CELL = 10
+CELL = 11
 GAP = 3
 STEP = CELL + GAP
-LEFT_PAD = 35
-TOP_PAD = 22
+LEFT = 38
+TOP = 28
 
 def fetch(username):
     r = requests.get(f"https://github-contributions-api.jogruber.de/v4/{username}", timeout=30)
@@ -32,20 +30,32 @@ def render(data, out):
     total = sum(days.values())
 
     today = datetime.now().date()
-    # Find the Sunday of the current week, then go back 52 weeks
-    end = today
-    # Go back to find the last Sunday
-    start = end - timedelta(weeks=52)
+    start = today - timedelta(weeks=52)
     start -= timedelta(days=(start.weekday() + 1) % 7)
 
-    # Count actual weeks
-    weeks = (end - start).days // 7 + 1
+    weeks = (today - start).days // 7 + 1
 
-    w = LEFT_PAD + weeks * STEP + 20
-    h = TOP_PAD + 7 * STEP + 30
+    w = LEFT + weeks * STEP + 30
+    h = TOP + 7 * STEP + 40
 
-    svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">',
-           f'<rect width="{w}" height="{h}" fill="{BG_COLOR}" rx="4"/>']
+    svg = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">',
+        f'<defs>',
+        f'  <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">',
+        f'    <stop offset="0%" stop-color="#39d353"/>',
+        f'    <stop offset="100%" stop-color="#26a641"/>',
+        f'  </linearGradient>',
+        f'  <filter id="glow">',
+        f'    <feGaussianBlur stdDeviation="1" result="blur"/>',
+        f'    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>',
+        f'  </filter>',
+        f'</defs>',
+        f'<rect width="{w}" height="{h}" fill="{BG}" rx="6"/>',
+        f'<rect x="0" y="0" width="{w}" height="4" fill="url(#headerGrad)" rx="6"/>',
+    ]
+
+    # Header
+    svg.append(f'<text x="12" y="22" fill="#ffffff" font-size="13" font-weight="600" font-family="sans-serif">{total} contributions in the last year</text>')
 
     # Month labels
     months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
@@ -55,16 +65,16 @@ def render(data, out):
         m = d.month
         if m not in shown:
             shown.add(m)
-            x = LEFT_PAD + wk * STEP
-            svg.append(f'<text x="{x}" y="13" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">{months[m-1]}</text>')
+            x = LEFT + wk * STEP
+            svg.append(f'<text x="{x}" y="{TOP - 6}" fill="{TEXT}" font-size="10" font-family="sans-serif">{months[m-1]}</text>')
 
-    # Day labels (Mon, Wed, Fri)
+    # Day labels
     for i, label in enumerate(["Mon","","Wed","","Fri"]):
         if label:
-            y = TOP_PAD + i * STEP + CELL - 1
-            svg.append(f'<text x="0" y="{y}" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">{label}</text>')
+            y = TOP + i * STEP + CELL - 1
+            svg.append(f'<text x="0" y="{y}" fill="{TEXT}" font-size="10" font-family="sans-serif">{label}</text>')
 
-    # Cells
+    # Cells with hover effect
     for wk in range(weeks):
         for d in range(7):
             dt = start + timedelta(weeks=wk, days=d)
@@ -84,18 +94,23 @@ def render(data, out):
             else:
                 lvl = 4
 
-            x = LEFT_PAD + wk * STEP
-            y = TOP_PAD + d * STEP
+            x = LEFT + wk * STEP
+            y = TOP + d * STEP
             color = PALETTE[lvl]
-            svg.append(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" fill="{color}" rx="{ROUND}"><title>{count} contributions on {key}</title></rect>')
+            
+            # Add subtle shadow for active cells
+            if lvl > 0:
+                svg.append(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" fill="{color}" rx="2" opacity="0.3" filter="url(#glow)"/>')
+            
+            svg.append(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" fill="{color}" rx="2"><title>{count} contributions on {key}</title></rect>')
 
     # Legend
-    lx = w - 100
-    ly = h - 10
-    svg.append(f'<text x="{lx - 24}" y="{ly + 1}" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">Less</text>')
+    lx = w - 110
+    ly = h - 14
+    svg.append(f'<text x="{lx - 28}" y="{ly + 1}" fill="{TEXT}" font-size="10" font-family="sans-serif">Less</text>')
     for i, c in enumerate(PALETTE):
-        svg.append(f'<rect x="{lx + i * (CELL + GAP)}" y="{ly - 9}" width="{CELL}" height="{CELL}" fill="{c}" rx="{ROUND}"/>')
-    svg.append(f'<text x="{lx + 5 * (CELL + GAP) + 5}" y="{ly + 1}" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">More</text>')
+        svg.append(f'<rect x="{lx + i * (CELL + GAP)}" y="{ly - 9}" width="{CELL}" height="{CELL}" fill="{c}" rx="2"/>')
+    svg.append(f'<text x="{lx + 6 * (CELL + GAP) + 5}" y="{ly + 1}" fill="{TEXT}" font-size="10" font-family="sans-serif">More</text>')
 
     svg.append("</svg>")
 
@@ -103,7 +118,7 @@ def render(data, out):
         f.write("\n".join(svg))
 
     print(f"[OK] Heatmap saved: {out}")
-    print(f"     {total} contributions in the last year")
+    print(f"     {total} contributions")
 
 if __name__ == "__main__":
     data = fetch(USERNAME)

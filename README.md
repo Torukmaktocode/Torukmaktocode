@@ -2,26 +2,33 @@
 
 ---
 
-## 📊 Contribution Heatmap
+<table>
+<tr>
+<td>
 
-![9 contributions in the last year](./contributions.svg)
+### 📈 Contributions
 
----
+![Contributions](./contributions.svg)
 
-### 🔥 GitHub Streak
+</td>
+<td>
+
+### 🔥 Streak
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=Torukmaktocode&theme=tokyonight&hide_border=true)](https://git.io/streak-stats)
 
----
-
-### 🏅 Badges
-
-![Followers](https://img.shields.io/github/followers/Torukmaktocode?label=Followers&style=flat-square&color=00bcd4)
-![Repos](https://img.shields.io/github/repos/Torukmaktocode?label=Repos&style=flat-square&color=9c27b0)
-![Stars](https://img.shields.io/github/stars/Torukmaktocode?label=Stars&style=flat-square&color=ff9800)
-![Commits](https://img.shields.io/github/commits/Torukmaktocode?label=Commits&style=flat-square&color=4caf50)
+</td>
+</tr>
+</table>
 
 ---
+
+<p align="center">
+  <img src="https://img.shields.io/github/followers/Torukmaktocode?label=Followers&style=for-the-badge&color=00bcd4" />
+  <img src="https://img.shields.io/github/repos/Torukmaktocode?label=Repos&style=for-the-badge&color=9c27b0" />
+  <img src="https://img.shields.io/github/stars/Torukmaktocode?label=Stars&style=for-the-badge&color=ff9800" />
+  <img src="https://img.shields.io/github/commits/Torukmaktocode?label=Commits&style=for-the-badge&color=4caf50" />
+</p>
 
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=Torukmaktocode&color=00bcd4&style=flat-square&label=VIEWS" alt="Profile Views" />
