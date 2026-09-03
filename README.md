@@ -2,15 +2,15 @@
 
 ---
 
-### 🔥 GitHub Streak
+### 📊 Contribution Heatmap
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=Torukmaktocode&theme=tokyonight&hide_border=true)](https://git.io/streak-stats)
+<img src="./contributions.svg" width="700" />
 
 ---
 
-### 📈 Activity Graph
+### 🔥 GitHub Streak
 
-[![Torukmaktocode's github activity graph](https://github-readme-activity-graph-jade.vercel.app/graph?username=Torukmaktocode&theme=tokyonight&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
+[![GitHub Streak](https://streak-stats.demolab.com?user=Torukmaktocode&theme=tokyonight&hide_border=true)](https://git.io/streak-stats)
 
 ---
 
