@@ -63,7 +63,7 @@ def make_ascii_svg(input_path, output_path):
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(svg_parts))
-    print(f"✅ ASCII SVG written to {output_path}")
+    print(f"[OK] ASCII SVG written to {output_path}")
 
 def escape_xml(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;").replace("'", "&apos;")

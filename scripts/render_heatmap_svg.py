@@ -122,7 +122,7 @@ def render_heatmap(data_path, output_path):
     
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(svg_parts))
-    print(f"✅ Heatmap SVG written to {output_path}")
+    print(f"[OK] Heatmap SVG written to {output_path}")
 
 if __name__ == "__main__":
     inp = sys.argv[1] if len(sys.argv) > 1 else "data/contributions.json"

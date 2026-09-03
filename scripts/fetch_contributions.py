@@ -14,7 +14,7 @@ def fetch_contributions(username, output_path):
     url = f"https://github.com/users/{username}/contributions"
     headers = {"User-Agent": "Mozilla/5.0"}
     
-    print(f"📡 Fetching contributions for {username}...")
+    print(f"[INFO] Fetching contributions for {username}...")
     resp = requests.get(url, headers=headers, timeout=30)
     resp.raise_for_status()
     
@@ -43,7 +43,7 @@ def fetch_contributions(username, output_path):
             })
     
     if not days:
-        print("❌ No contribution data found. Check username.")
+        print("[ERROR] No contribution data found. Check username.")
         return
     
     # Calculate stats
@@ -94,10 +94,10 @@ def fetch_contributions(username, output_path):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     
-    print(f"✅ Saved {len(days)} days ({total} total contributions)")
-    print(f"   Current streak: {current_streak} days")
-    print(f"   Longest streak: {longest_streak} days")
-    print(f"   Best day: {best_day['date']} ({best_day['count']} contributions)")
+    print(f"[OK] Saved {len(days)} days ({total} total contributions)")
+    print(f"     Current streak: {current_streak} days")
+    print(f"     Longest streak: {longest_streak} days")
+    print(f"     Best day: {best_day['date']} ({best_day['count']} contributions)")
 
 if __name__ == "__main__":
     username = sys.argv[1] if len(sys.argv) > 1 else "Torukmaktocode"

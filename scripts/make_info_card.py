@@ -77,7 +77,7 @@ def make_info_card(output_path, static=False):
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(svg_parts))
-    print(f"✅ Info card SVG written to {output_path}")
+    print(f"[OK] Info card SVG written to {output_path}")
 
 def escape_xml(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
