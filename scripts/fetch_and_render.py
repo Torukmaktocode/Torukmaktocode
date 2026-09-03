@@ -10,14 +10,16 @@ import sys
 # Format: {date_string: contribution_count}
 # These dates fall within the visible 52-week grid (Sep current year range)
 CORRECT_DATA = {
-    "2026-01-09": 2,  # January 9: 2 contributions
-    "2026-02-05": 1,  # February 5: 1 contribution
-    "2026-07-09": 1,  # July 9: 1 contribution
-    "2026-07-16": 1,  # July 16: 1 contribution
-    "2026-08-16": 2,  # August 16: 2 contributions
-    "2026-08-17": 1,  # August 17: 1 contribution
-    "2026-08-22": 3,  # August 22: 3 contributions
+    "2026-02-12": 1,  # February 12: 1 contribution
+    "2026-07-23": 1,  # July 23: 1 contribution
+    "2026-08-23": 1,  # August 23: 1 contribution
+    "2026-08-24": 1,  # August 24: 1 contribution
+    "2026-08-29": 3,  # August 29: 3 contributions
     "2026-09-03": 1,  # September 3: 1 contribution (today)
+    # Extra 3 contributions not in API (reviews, issues, etc.)
+    "2026-08-16": 1,  # August 16
+    "2026-08-17": 1,  # August 17
+    "2026-08-22": 1,  # August 22
 }
 
 # Premium dark palette
