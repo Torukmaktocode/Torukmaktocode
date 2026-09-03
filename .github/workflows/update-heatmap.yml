@@ -18,11 +18,13 @@ jobs:
         with:
           python-version: "3.11"
       
-      - run: pip install requests
+      - run: pip install requests playwright
+      - run: playwright install chromium
       
       - run: python scripts/fetch_and_render.py
+      - run: python scripts/svg_to_png.py
       
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update contribution heatmap [skip ci]"
-          file_pattern: "contributions.svg"
+          file_pattern: "contributions.svg contributions.png dark_mode.png"
