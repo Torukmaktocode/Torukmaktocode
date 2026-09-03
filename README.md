@@ -2,32 +2,24 @@
 
 ---
 
-### 📊 Contribution Heatmap (Tiempo Real)
+### 📊 Stats
 
-![Contribution Grid](https://github-contribution-grid.vercel.app/api/Torukmaktocode)
-
----
-
-### 📊 GitHub Stats (Tiempo Real)
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Torukmaktocode&show_icons=true&theme=radical&hide_border=true)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Torukmaktocode&layout=compact&theme=radical&hide_border=true)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Torukmaktocode&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true)
 
 ---
 
-### 🔥 GitHub Streak
+### 🔥 Streak
 
-[![GitHub Streak](https://streak-stats.demolab.com?user=Torukmaktocode&theme=radical&hide_border=true)](https://git.io/streak-stats)
+[![GitHub Streak](https://streak-stats.demolab.com?user=Torukmaktocode&theme=tokyonight&hide_border=true)](https://git.io/streak-stats)
 
 ---
 
-### 🏆 Trophies
+### 🏆 Top Languages
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=Torukmaktocode&theme=radical&no-frame=true&column=7)](https://github.com/ryo-ma/github-profile-trophy)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Torukmaktocode&layout=compact&theme=tokyonight&hide_border=true)
 
 ---
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Torukmaktocode&color=7e57c2&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views" />
+  <img src="https://komarev.com/ghpvc/?username=Torukmaktocode&color=00bcd4&style=flat-square&label=VIEWS" alt="Profile Views" />
 </p>
