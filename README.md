@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Torukmaktocode's GitHub profile" src="https://raw.githubusercontent.com/Torukmaktocode/Torukmaktocode/main/dark_mode.png?v=3" width="100%" />
+  <img alt="Torukmaktocode's GitHub profile" src="https://raw.githubusercontent.com/Torukmaktocode/Torukmaktocode/main/dark_mode.png?v=4" width="100%" />
 </p>
 
 <br>
