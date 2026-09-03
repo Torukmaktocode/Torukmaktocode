@@ -1,113 +1,110 @@
 #!/usr/bin/env python3
 """
 Fetch GitHub contributions and render dark theme heatmap SVG.
+Matches GitHub's native contribution graph layout exactly.
 Usage: python fetch_and_render.py [username]
 """
 import requests
-import json
 from datetime import datetime, timedelta
 import sys
 
 USERNAME = sys.argv[1] if len(sys.argv) > 1 else "Torukmaktocode"
 
-# GitHub's dark palette (dark to bright green)
-PALETTE = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353", "#69f0a0"]
+# GitHub's exact dark palette
+PALETTE = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"]
+BG_COLOR = "#0d1117"
+TEXT_COLOR = "#8b949e"
+ROUND = 2
 
-CELL_SIZE = 11
-CELL_GAP = 3
-WEEKS = 52
+CELL = 10
+GAP = 3
+STEP = CELL + GAP
+LEFT_PAD = 35
+TOP_PAD = 22
 
-def fetch_contributions(username):
-    url = f"https://github-contributions-api.jogruber.de/v4/{username}"
-    resp = requests.get(url, timeout=30)
-    resp.raise_for_status()
-    return resp.json()
+def fetch(username):
+    r = requests.get(f"https://github-contributions-api.jogruber.de/v4/{username}", timeout=30)
+    r.raise_for_status()
+    return r.json()
 
-def render_svg(data, output_path):
-    contributions = data.get("contributions", [])
-    
-    # Build lookup dict
-    day_map = {}
-    for c in contributions:
-        day_map[c["date"]] = c["count"]
-    
-    # Calculate grid
+def render(data, out):
+    days = {c["date"]: c["count"] for c in data.get("contributions", [])}
+    total = sum(days.values())
+
     today = datetime.now().date()
-    start = today - timedelta(weeks=WEEKS)
-    start -= timedelta(days=start.weekday() + 1)  # align to Sunday
-    
-    svg_w = WEEKS * (CELL_SIZE + CELL_GAP) + 50
-    svg_h = 7 * (CELL_SIZE + CELL_GAP) + 60
-    
-    parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_w} {svg_h}" width="{svg_w}" height="{svg_h}">',
-        f'<rect width="{svg_w}" height="{svg_h}" fill="#0d1117" rx="6"/>',
-    ]
-    
+    # Find the Sunday of the current week, then go back 52 weeks
+    end = today
+    # Go back to find the last Sunday
+    start = end - timedelta(weeks=52)
+    start -= timedelta(days=(start.weekday() + 1) % 7)
+
+    # Count actual weeks
+    weeks = (end - start).days // 7 + 1
+
+    w = LEFT_PAD + weeks * STEP + 20
+    h = TOP_PAD + 7 * STEP + 30
+
+    svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">',
+           f'<rect width="{w}" height="{h}" fill="{BG_COLOR}" rx="4"/>']
+
     # Month labels
     months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    last_month = -1
-    for w in range(WEEKS):
-        d = start + timedelta(weeks=w)
-        m = d.month - 1
-        if m != last_month:
-            last_month = m
-            x = 44 + w * (CELL_SIZE + CELL_GAP)
-            parts.append(f'<text x="{x}" y="12" fill="#8b949e" font-family="sans-serif" font-size="10">{months[m]}</text>')
-    
-    # Day labels
-    day_labels = ["", "Mon", "", "Wed", "", "Fri", ""]
-    for i, label in enumerate(day_labels):
+    shown = set()
+    for wk in range(weeks):
+        d = start + timedelta(weeks=wk)
+        m = d.month
+        if m not in shown:
+            shown.add(m)
+            x = LEFT_PAD + wk * STEP
+            svg.append(f'<text x="{x}" y="13" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">{months[m-1]}</text>')
+
+    # Day labels (Mon, Wed, Fri)
+    for i, label in enumerate(["Mon","","Wed","","Fri"]):
         if label:
-            y = 22 + i * (CELL_SIZE + CELL_GAP) + CELL_SIZE - 1
-            parts.append(f'<text x="0" y="{y}" fill="#8b949e" font-family="sans-serif" font-size="10">{label}</text>')
-    
+            y = TOP_PAD + i * STEP + CELL - 1
+            svg.append(f'<text x="0" y="{y}" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">{label}</text>')
+
     # Cells
-    for w in range(WEEKS):
+    for wk in range(weeks):
         for d in range(7):
-            current = start + timedelta(weeks=w, days=d)
-            if current > today:
+            dt = start + timedelta(weeks=wk, days=d)
+            if dt > today:
                 continue
-            
-            date_str = current.isoformat()
-            count = day_map.get(date_str, 0)
-            
-            # Calculate level (0-4)
+            key = dt.isoformat()
+            count = days.get(key, 0)
+
             if count == 0:
-                level = 0
-            elif count <= 3:
-                level = 1
-            elif count <= 6:
-                level = 2
+                lvl = 0
+            elif count <= 2:
+                lvl = 1
+            elif count <= 5:
+                lvl = 2
             elif count <= 9:
-                level = 3
+                lvl = 3
             else:
-                level = 4
-            
-            x = 44 + w * (CELL_SIZE + CELL_GAP)
-            y = 20 + d * (CELL_SIZE + CELL_GAP)
-            color = PALETTE[min(level, len(PALETTE) - 1)]
-            
-            parts.append(f'<rect x="{x}" y="{y}" width="{CELL_SIZE}" height="{CELL_SIZE}" fill="{color}" rx="2"><title>{count} contributions on {date_str}</title></rect>')
-    
+                lvl = 4
+
+            x = LEFT_PAD + wk * STEP
+            y = TOP_PAD + d * STEP
+            color = PALETTE[lvl]
+            svg.append(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" fill="{color}" rx="{ROUND}"><title>{count} contributions on {key}</title></rect>')
+
     # Legend
-    legend_x = svg_w - 110
-    legend_y = svg_h - 12
-    parts.append(f'<text x="{legend_x - 28}" y="{legend_y + 1}" fill="#8b949e" font-family="sans-serif" font-size="10">Less</text>')
-    for i, color in enumerate(PALETTE):
-        x = legend_x + i * (CELL_SIZE + CELL_GAP)
-        parts.append(f'<rect x="{x}" y="{legend_y - 10}" width="{CELL_SIZE}" height="{CELL_SIZE}" fill="{color}" rx="2"/>')
-    parts.append(f'<text x="{legend_x + 6 * (CELL_SIZE + CELL_GAP) + 4}" y="{legend_y + 1}" fill="#8b949e" font-family="sans-serif" font-size="10">More</text>')
-    
-    parts.append("</svg>")
-    
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(parts))
-    
-    total = sum(day_map.values())
-    print(f"[OK] Heatmap saved to {output_path}")
+    lx = w - 100
+    ly = h - 10
+    svg.append(f'<text x="{lx - 24}" y="{ly + 1}" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">Less</text>')
+    for i, c in enumerate(PALETTE):
+        svg.append(f'<rect x="{lx + i * (CELL + GAP)}" y="{ly - 9}" width="{CELL}" height="{CELL}" fill="{c}" rx="{ROUND}"/>')
+    svg.append(f'<text x="{lx + 5 * (CELL + GAP) + 5}" y="{ly + 1}" fill="{TEXT_COLOR}" font-size="10" font-family="sans-serif">More</text>')
+
+    svg.append("</svg>")
+
+    with open(out, "w", encoding="utf-8") as f:
+        f.write("\n".join(svg))
+
+    print(f"[OK] Heatmap saved: {out}")
     print(f"     {total} contributions in the last year")
 
 if __name__ == "__main__":
-    data = fetch_contributions(USERNAME)
-    render_svg(data, "contributions.svg")
+    data = fetch(USERNAME)
+    render(data, "contributions.svg")

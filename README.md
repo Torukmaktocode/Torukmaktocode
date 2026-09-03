@@ -2,9 +2,9 @@
 
 ---
 
-### 📊 Contribution Heatmap
+## 📊 Contribution Heatmap
 
-<img src="./contributions.svg" width="700" />
+![9 contributions in the last year](./contributions.svg)
 
 ---
 
