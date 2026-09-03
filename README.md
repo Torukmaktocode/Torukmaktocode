@@ -2,6 +2,12 @@
 
 ---
 
+### 📊 Contribution Heatmap (Tiempo Real)
+
+![Contribution Grid](https://github-contribution-grid.vercel.app/api/Torukmaktocode)
+
+---
+
 ### 📊 GitHub Stats (Tiempo Real)
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Torukmaktocode&show_icons=true&theme=radical&hide_border=true)
@@ -16,21 +22,9 @@
 
 ---
 
-### 📈 Activity Graph
-
-[![Torukmaktocode's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=Torukmaktocode&theme=redical&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
-
----
-
 ### 🏆 Trophies
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=Torukmaktocode&theme=radical&no-frame=true&column=7)](https://github.com/ryo-ma/github-profile-trophy)
-
----
-
-### 💡 random dev quote
-
-[![Readme Quotes](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)](https://github.com/piyushsuthar/github-readme-quotes)
 
 ---
 
