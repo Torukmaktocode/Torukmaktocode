@@ -2,21 +2,24 @@
 
 ---
 
-### 📊 Stats
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Torukmaktocode&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true)
-
----
-
-### 🔥 Streak
+### 🔥 GitHub Streak
 
 [![GitHub Streak](https://streak-stats.demolab.com?user=Torukmaktocode&theme=tokyonight&hide_border=true)](https://git.io/streak-stats)
 
 ---
 
-### 🏆 Top Languages
+### 📊 Activity Graph
 
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Torukmaktocode&layout=compact&theme=tokyonight&hide_border=true)
+[![Torukmaktocode's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=Torukmaktocode&theme=tokyonight-dark&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
+
+---
+
+### 🏅 Badges
+
+![Followers](https://img.shields.io/github/followers/Torukmaktocode?label=Followers&style=flat-square&color=00bcd4)
+![Repos](https://img.shields.io/github/repos/Torukmaktocode?label=Repos&style=flat-square&color=9c27b0)
+![Stars](https://img.shields.io/github/stars/Torukmaktocode?label=Stars&style=flat-square&color=ff9800)
+![Commits](https://img.shields.io/github/commits/Torukmaktocode?label=Commits&style=flat-square&color=4caf50)
 
 ---
 
