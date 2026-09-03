@@ -31,17 +31,17 @@ def render(data, out):
     
     today = date.today()
     
-    # Find the most recent Saturday (GitHub's week ends on Saturday)
-    days_since_saturday = (today.weekday() - 5) % 7
-    end_saturday = today - timedelta(days=days_since_saturday)
+    # GitHub's contribution graph shows the last 52 weeks
+    # The rightmost column is the current week (Sunday to Saturday)
+    # We need to find the Sunday that started the current week
     
-    # Go back 52 weeks from the most recent Saturday
-    start_sunday = end_saturday - timedelta(weeks=51) - timedelta(days=1)
+    # Find the Sunday of the current week
+    current_sunday = today - timedelta(days=(today.weekday() + 1) % 7)
     
-    # Find first date with data to align months
-    dates_with_data = sorted(days.keys())
+    # Go back 51 more weeks to get 52 weeks total
+    start_sunday = current_sunday - timedelta(weeks=51)
     
-    weeks = (end_saturday - start_sunday).days // 7 + 1
+    weeks = 52
     
     w = LEFT + weeks * STEP + 30
     h = TOP + 7 * STEP + 40
@@ -65,34 +65,35 @@ def render(data, out):
     # Header
     svg.append(f'<text x="12" y="22" fill="#ffffff" font-size="13" font-weight="600" font-family="sans-serif">{total} contributions in the last year</text>')
     
-    # Month labels - aligned to first week containing that month
+    # Month labels - show at the start of each month
     months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-    last_month_shown = -1
+    last_month = -1
     
     for wk in range(weeks):
-        # Get the Sunday of this week
-        week_sunday = start_sunday + timedelta(weeks=wk)
-        # Check if this week crosses into a new month
-        week_saturday = week_sunday + timedelta(days=6)
+        # Get the first day of this week (Sunday)
+        week_start = start_sunday + timedelta(weeks=wk)
         
-        # Show month label on the first week that starts in a new month
-        if week_sunday.month != last_month_shown:
-            last_month_shown = week_sunday.month
+        # Show month label when the month changes
+        if week_start.month != last_month:
+            last_month = week_start.month
             x = LEFT + wk * STEP
-            svg.append(f'<text x="{x}" y="{TOP - 6}" fill="{TEXT}" font-size="10" font-family="sans-serif">{months[week_sunday.month - 1]}</text>')
+            svg.append(f'<text x="{x}" y="{TOP - 6}" fill="{TEXT}" font-size="10" font-family="sans-serif">{months[week_start.month - 1]}</text>')
     
-    # Day labels
+    # Day labels (Mon, Wed, Fri)
     for i, label in enumerate(["Mon","","Wed","","Fri"]):
         if label:
             y = TOP + i * STEP + CELL - 1
             svg.append(f'<text x="0" y="{y}" fill="{TEXT}" font-size="10" font-family="sans-serif">{label}</text>')
     
-    # Cells
+    # Cells - map each date to its correct position
     for wk in range(weeks):
         for d in range(7):
             dt = start_sunday + timedelta(weeks=wk, days=d)
+            
+            # Skip future dates
             if dt > today:
                 continue
+            
             key = dt.isoformat()
             count = days.get(key, 0)
             
@@ -115,7 +116,7 @@ def render(data, out):
             if lvl > 0:
                 svg.append(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" fill="{color}" rx="2" opacity="0.3" filter="url(#glow)"/>')
             
-            svg.append(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" fill="{color}" rx="2"><title>{count} contributions on {key}</title></rect>')
+            svg.append(f'<rect x="{x}" y="{y}" width="{CELL}" height="{CELL}" fill="{color}" rx="2"><title>{count} contributions on {key} ({dt.strftime("%a")})</title></rect>')
     
     # Legend
     lx = w - 110
@@ -133,6 +134,8 @@ def render(data, out):
     print(f"[OK] Heatmap saved: {out}")
     print(f"     {total} contributions")
     print(f"     Date range: {start_sunday} to {today}")
+    print(f"     Today is: {today.strftime('%A')}")
+    print(f"     Current week starts: {current_sunday}")
 
 if __name__ == "__main__":
     data = fetch(USERNAME)
