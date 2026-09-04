@@ -27,6 +27,11 @@
 
 <p align="center">
   Le pedí a la misma IA que me enseñara lo más básico de cada lenguaje.<br>
+  Pero la IA borraba o destruía el código constantemente.<br>
+  No sabía usar Git. Así que copiaba el mismo documento con todo en varias carpetas<br>para que no lo pudiera borrar. Y así comenzó la aventura.
+</p>
+
+<p align="center">
   Rompí el sistema <strong>200 veces al día</strong>. Cada error era una lección.<br>
   10 meses de aprendizaje brutal, sin detenerme.
 </p>
